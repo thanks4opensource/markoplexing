@@ -272,7 +272,7 @@ would (but with markoplexing did not).</p>
 
 <p>Basic constants describing I/O port (thus physical MCU pin) assignments, etc (many &ldquo;etceteras&rdquo;) are contained <a href="source/main.c">main.c</a>, <a href="source/markoplex.c">markoplex.c</a>,  and <a href="source/display.c">display.c</a> source files. A differently connected LPC824 would require changing these. Of course a different MCU would require a complete rewrite of the code which, in the interest of simplicity, is written in C and without any attempt a making it generic and portable.</p>
 
-<p>If a 12 LED APA102 &ldquo;smart&rdquo; RGB strip is available it can be connected and driven by the LPC824&rsquo;s SPI peripheral to display the detected switch closures (actual and/or ghost). See the files <a href="source/display.c">display.c</a> and <a href="source/apa102s.c">apa102s.c</a>, and the <code>#ifdef USE_DISPLAY</code> conditional compilation directive. If not, the included <code>markcharl.gdb</code> file&rsquo;s &ldquo;dprintf&rdquo; command can be used instead (or in addition).</p>
+<p>If a 12 LED APA102 &ldquo;smart&rdquo; RGB strip is available it can be connected and driven by the LPC824&rsquo;s SPI peripheral to display the detected switch closures (actual and/or ghost). See the file <a href="source/display.c">display.c</a> and the <code>#ifdef USE_DISPLAY</code> conditional compilation directive. If not, the included <code>markcharl.gdb</code> file&rsquo;s &ldquo;dprintf&rdquo; command can be used instead (or in addition).</p>
 
 <p>The <code>#ifdef SWITCHABLE_KEYPAD</code> configuration is for use with the <a href="#configurable_circuit">circuit</a>, below.</p>
 
