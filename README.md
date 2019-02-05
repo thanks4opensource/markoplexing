@@ -28,7 +28,7 @@ Contents  <a name="contents"></a>
 "Claimer" <a name="claimer"></a>
 ---------
 
-(As opposed to "disclaimer.)
+(As opposed to "disclaimer".)
 
 I claim, at minimum, that I independently conceived the technique contained herein. Therefore, in time-honored tradition, I am naming it after myself.
 
@@ -285,11 +285,11 @@ would (but with markoplexing did not).
 
 Included here is an example software implementation for the NXP LPC824 microcontroller chip. Both a charlieplexing and a markoplexing executable can be built to better compare the original and modified techniques.
 
-Also included is a primitive standalone build system for compiling the executables. Most users will probably want to extract only the basic code (contained in the `source` directory) for use in their own build environments.
+Also included is a primitive standalone build system for compiling the executables. Most users will probably want to extract only the basic code (contained in the [source](source) directory) for use in their own build environments.
 
-Basic constants describing I/O port (thus physical MCU pin) assignments, etc (many "etceteras") are contained `main.c`, `markoplex.c`,  and `display.c` source files. A differently connected LPC824 would require changing these. Of course a different MCU would require a complete rewrite of the code which, in the interest of simplicity, is written in C and without any attempt a making it generic and portable.
+Basic constants describing I/O port (thus physical MCU pin) assignments, etc (many "etceteras") are contained [main.c](source/main.c), [markoplex.c](source/markoplex.c),  and [display.c](source/display.c) source files. A differently connected LPC824 would require changing these. Of course a different MCU would require a complete rewrite of the code which, in the interest of simplicity, is written in C and without any attempt a making it generic and portable.
 
-If a 12 LED APA102 "smart" RGB strip is available it can be connected and driven by the LPC824's SPI peripheral to display the detected switch closures (actual and/or ghost). See the files `display.c` and `apa102s.c`, and the `#ifdef USE_DISPLAY` conditional compilation directive. If not, the included `markcharl.gdb` file's "dprintf" command can be used instead (or in addition).
+If a 12 LED APA102 "smart" RGB strip is available it can be connected and driven by the LPC824's SPI peripheral to display the detected switch closures (actual and/or ghost). See the files [display.c](source/display.c) and [apa102s.c](source/apa102s.c), and the `#ifdef USE_DISPLAY` conditional compilation directive. If not, the included `markcharl.gdb` file's "dprintf" command can be used instead (or in addition).
 
 The `#ifdef SWITCHABLE_KEYPAD` configuration is for use with the [circuit](#configurable_circuit), below.
 
