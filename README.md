@@ -1,7 +1,7 @@
 markoplexing: ghostless N*(N-1) switch encoding
 ===============================================
 
-**markoplexing** is a software extension to the well-known **charlieplexing** method of encoding of **N*(N-1)** input switches using only **N** I/O ports;  however **markoplexing** distinguishes between real/actual vs spurious/"ghost" switch closures
+**markoplexing** is a software extension to the well-known **charlieplexing** method of encoding of __N*(N-1)__ input switches using only **N** I/O ports;  however **markoplexing** distinguishes between real/actual vs spurious/"ghost" switch closures
 
 
 
