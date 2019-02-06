@@ -173,7 +173,7 @@ This causes the scanning software algorithm to falsely read switch r2c3 as close
 
 Fortunately, there is a simple fix for the "ghost" switch problem, although it requires additional hardware. By adding a diode in series with each switch,  the "backward" current flow is stopped. The figure below is identical to the one above except for the additional diodes. The magenta arrow line shows current being prevented from flowing through switch r1c4 to Row 1, and switch r2c3 is not read as a ghost closure.
 
-![3x4 r2c4 r1c4r1c3 noghost](images/3x4_r2c4_r1c4r1c3_noghost.png ""no ghost row2 column 3")
+![3x4 r2c4 r1c4r1c3 noghost](images/3x4_r2c4_r1c4r1c3_noghost.png "no ghost row2 column 3")
 
 
 
