@@ -43,7 +43,7 @@ I believe the technique may be of use to practitioners in its field, and am ther
 Licenses  <a name="licenses"></a>
 --------
 
-This README.md document and machine-generated versions thereof, and the technique(s) and technique(s) it describes, is/are licensed under the terms of the Creative Commons [Attribution-ShareAlike 4.0 International](LICENSE_cc-by-sa.txt), also available at <https://creativecommons.org/licenses/by-sa/4.0/>.
+This README.md document and machine-generated versions thereof, and the technique(s) it describes, is/are licensed under the terms of the Creative Commons [Attribution-ShareAlike 4.0 International](LICENSE_cc-by-sa.txt), also available at <https://creativecommons.org/licenses/by-sa/4.0/>.
 
 The software contained in this repository is licensed under the terms of the [GNU General Public License](LICENSE_GPL.txt), also available at <https://www.gnu.org/licenses/gpl.html>.
 
