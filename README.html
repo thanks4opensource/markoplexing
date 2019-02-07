@@ -68,7 +68,7 @@
 
 <p>Those familiar with charlieplexing should skip ahead to <a href="#markoplexing">Markoplexing</a></p>
 
-<p>Those understandably annoyed at being told what skip should skip this entire repository. Note, however, that this is the last of the &ldquo;skip&rdquo; suggestions.</p>
+<p>Those understandably annoyed at being told what to skip should skip this entire repository. Note, however, that this is the last of the &ldquo;skip&rdquo; suggestions.</p>
 
 <h3>MCU switch interfacing<a name="mcu_switch_interfacing"></a></h3>
 
@@ -100,9 +100,9 @@
 
 <p>Normally, interfacing <strong>N</strong> switches to a microcontroller would require <strong>N</strong> MCU input ports. While this is practical for small numbers of switches, it becomes unworkable as <strong>N</strong> becomes large.</p>
 
-<p>A common technique for interfacing large numbers of switches (such as a numeric keypad or particularly a PC keyboard) is to arrange <strong>M*N</strong> switches in a <strong>MxN</strong> rectangular matrix. In this way the <strong>M*N</strong> switches can be interfaced using only <strong>M+N</strong> I/O ports.</p>
+<p>A common technique for interfacing large numbers of switches (such as a numeric keypad or particularly a PC keyboard) is to arrange <strong>M*N</strong> switches in an <strong>MxN</strong> rectangular matrix. In this way the <strong>M*N</strong> switches can be interfaced using only <strong>M+N</strong> I/O ports.</p>
 
-<p>Note that to get the greatest benefits from this scheme, <strong>M</strong> and <strong>N</strong> should be approximately equal, i.e. the rectangular matrix should be as square
+<p>Note that to get the greatest benefit from this scheme, <strong>M</strong> and <strong>N</strong> should be approximately equal, i.e. the rectangular matrix should be as square
 as possible. For example, 100 switches may be arranged in the following matrices:</p>
 
 <pre><code>     M      N       M*N     M+N       100-(M+N)      extras         
@@ -152,7 +152,7 @@ as possible. For example, 100 switches may be arranged in the following matrices
 
 <h3>The &ldquo;ghost&rdquo; switch problem <a name="the_ghost_problem"></a></h3>
 
-<p>Unfortunately, matrix switch encoding has a significant flaw. If certain combinations of switches are closed simultaneously, the technique will spuriously read one or more <em>open</em> switches as closed.</p>
+<p>Unfortunately, matrix switch encoding has a significant flaw. If certain combinations of switches are closed simultaneously, the technique will spuriously read one or more open switches as closed.</p>
 
 <p>The following figure illustrates the problem. Switches r1c3, r1c4, and r2c4 are closed. When Row 1 is energized (not illustrated), switches r1c3 and r1c4 are correctly read on input ports Column 3 and Column 4.</p>
 
@@ -170,7 +170,7 @@ as possible. For example, 100 switches may be arranged in the following matrices
 
 <h3>Charlieplexing<a name="charlieplexing"></a></h3>
 
-<p>&ldquo;Charlieplexing&rdquo; is a very clever scheme which allows interfacing <strong>N*(N-1)</strong> switches using only <strong>N</strong> I/O lines &ndash; typically far fewer than required by <strong>MxN</strong> matrix encoding. Note that the &ldquo;I/O lines&rdquo; distinction is important: In charlieplexing, ports must be dynamically switchable, sometimes being configured as inputs and other times as output.</p>
+<p>&ldquo;Charlieplexing&rdquo; is a very clever scheme which allows interfacing <strong>N*(N-1)</strong> switches using only <strong>N</strong> I/O lines &ndash; typically far fewer than required by <strong>MxN</strong> matrix encoding. Note that the &ldquo;I/O lines&rdquo; distinction is important: In charlieplexing, ports must be dynamically switchable, sometimes being configured as inputs and at other times as outputs.</p>
 
 <p>A charlieplexed circuit for 12 switches interfaced with 4 lines (<code>4*(4-3)==12</code>) is shown below. The circuit is best understood as having each of the I/O ports &ndash; when temporarily configured as an output &ndash; connected to 3 switches. The other sides of the switches are connected to one of the remaining 3 I/O ports, each of which is simultaneously/temporarily configured as an input.</p>
 
@@ -191,7 +191,7 @@ as possible. For example, 100 switches may be arranged in the following matrices
 
 <p><img src="images/plex_c6d.png" title="charlieplex switch 6" alt="plex c6d" /></p>
 
-<p>Similar to MxN matrices, multiple charlieplexed switches can be closed simultaneously and (sometimes! &ndash; see below) correctly read. In the following figure, switches 4 and 6 are closed.</p>
+<p>Similar to MxN matrices, multiple charlieplexed switches can be closed simultaneously and (sometimes! &ndash; see below) correctly read. In the following figure, switches 4 and 6 are closed and read correctly.</p>
 
 <p><a name="charlieplex_4_and_6"></a>
 <img src="images/plex_c_6d4a.png" title="charlieplex switches 4 and 6" alt="plex c 6d4a" /></p>
@@ -200,7 +200,7 @@ as possible. For example, 100 switches may be arranged in the following matrices
 
 <p><img src="images/plex_c6_97a_ghost.png" title="plex c6 97a ghost" alt="plex c6 97a ghost" /></p>
 
-<p>As with MxN matrices, diodes can be added to prevent the backward flow and ghost switch misreads. The figure below illustrates this, with the flow through switch 9 being prevented by its associated diode, and the switch-7-misread-as-ghost-switch-4 error avoided.</p>
+<p>As with MxN matrices, diodes can be added to prevent the backward flow and ghost switch misreads. The figure below illustrates this, with the flow through switch 9 being prevented by its associated diode, and the switch-7-read-as-ghost-switch-4 error avoided.</p>
 
 <p><img src="images/plex_c6_9_diodes_no_ghost.png" title="charlieplex diodes no ghost" alt="plex c6 9 diodes no ghost" /></p>
 
@@ -208,14 +208,14 @@ as possible. For example, 100 switches may be arranged in the following matrices
 
 <p><img src="images/plex_c6d_1a_ghost.png" title="charlieplex unfixable ghost" alt="plex c6d 1a ghost" /></p>
 
-<p>But as opposed to the situation with MxN matrices, where diodes fixed all ghosting problems, in charlieplexing they only prevent some &ldquo;ghosts&rdquo;. In the above example (among others), the incorrect current flow through switch 1 is in the &ldquo;correct&rdquo; direction, just as it would be when port D is energized to read switches 1 through 3. The following shows how the current passes through the diode to then be read incorrectly at port A.</p>
+<p>But as opposed to the situation with MxN matrices, where diodes fixed all ghosting problems, in charlieplexing they only prevent some &ldquo;ghosts&rdquo;. In the above example (among others), the incorrect current flow through switch 1 is in the &ldquo;correct&rdquo; direction, just as it would be when port D is energized to read switches 1 through 3. The following shows how the current passes through the diode and is still incorrectly read at port A.</p>
 
 <p><a name="charlieplex_fatal"></a>
 <img src="images/plex_c6d_1a_diodes_ghost.png" title="charlieplex ghost despite diodes" alt="plex c6d 1a diodes ghost" /></p>
 
-<p>This is the fatal flaw of the charlieplexing technique. (Note it is &ldquo;fatal&rdquo; only if multiple switch closures need to be detected correctly and ghosts ignored. If a system can only have one switch closed at a time, or is allowed to reject cases when multiple switches are read as closed, correctly or not, the flaw is unimportant.)</p>
+<p>This is the fatal flaw of charlieplexing. Note that it is &ldquo;fatal&rdquo; only if multiple switch closures need to be detected correctly and ghosts ignored. If the physical hardware only allows one switch closure at a time, or the system is allowed to reject cases when multiple switches are read (or mis-read) as closed, the flaw is unimportant.</p>
 
-<p>But if any/all combinations of multiple switches must be detected correctly (without ghosts), charlieplexing &ndash; and its benefit of reduced I/O port count &ndash; cannot be used. There is no way around the ghosting problem.</p>
+<p>But if any and all combinations of multiple switches must be detected correctly (without ghosts), charlieplexing &ndash; and its benefit of reduced I/O port count &ndash; cannot be used. There is no way around the ghosting problem.</p>
 
 <p><em>Or is there?</em></p>
 
@@ -227,21 +227,21 @@ as possible. For example, 100 switches may be arranged in the following matrices
 
 <p>The correct input port sees the output port&rsquo;s voltage minus one diode voltage drop. The incorrect/ghost port sees <strong>two</strong> diode drops.</p>
 
-<p><em>A-ha!</em> What if, rather than configuring and reading the ports a digital inputs, true/false, one/zero, they are configured and read as <em>analog</em> inputs?  The difference between the voltage levels in the correct and ghost cases can then be detected, and latter rejected.</p>
+<p><em>A-ha!</em> What if, rather than configuring and reading the ports as digital inputs (true/false, one/zero) they are configured and read as <em>analog</em> inputs (voltage)?  The difference between the voltage levels in the correct and ghost cases can then be detected, and the latter rejected.</p>
 
 <p><em>Charlieplex ghosting fixed!</em></p>
 
 <p>Note that this technique has several requirements:</p>
 
 <ul>
-<li>A microcontroller with either ADC or analog comparator inputs</li>
-<li>&hellip; which can be dynamically switched between analog input and digital output modes</li>
+<li>A microcontroller with either analog-to-digital (ADC) or analog comparator inputs</li>
+<li>&hellip; which can be dynamically switched between analog input and digital output modes.</li>
 <li>Correct configuration of the analog voltage threshold between one vs more than one diode voltage drop</li>
-<li>&hellip; diode voltage drops which, due to the very low currents allowed by the high input impedance of the input ports is <em>not</em> the canonically-spec&rsquo;d value (typically 0.7V))</li>
+<li>&hellip; diode voltage drops which, due to the very low currents passing through the high input impedance of the input ports, are <em>not</em> the canonically-spec&rsquo;d value (typically 0.7V).</li>
 </ul>
 
 
-<p>Note also that, as tempting as it may seem, it is probably impossible to discriminate between the one and multiple diode voltage drops using a digital input port. Digital input ports always have thresholds for the detection of high and low logic levels, with an &ldquo;undefined&rdquo; voltage zone in between.</p>
+<p>Note also that, as tempting as it may seem, it is probably impossible to discriminate between the one and multiple diode voltage drops using a digital input port. Digital input ports always have thresholds for the detection of high and low logic levels with an &ldquo;undefined&rdquo; voltage zone in between.</p>
 
 <p>These levels are typically <code>0.3Vdd</code>, below which a logic 0 is read, and <code>0.7Vdd</code> above which is logic 1. There is no mathematically possible forward diode voltage drop <code>Vf</code> which simultaneously satisfies the two required inequalities:</p>
 
@@ -249,20 +249,19 @@ as possible. For example, 100 switches may be arranged in the following matrices
     Vdd - 2Vf &lt; 0.3Vdd
 </code></pre>
 
-<p>Despite this, the required analog threshold can be adjusted by appropriate choice of diode, including Schottky for low Vf and light-emitting (LED) for high Vf.</p>
+<p>Despite this, the required analog threshold can be adjusted by appropriate choice of diode, including Schottky for low Vf or light-emitting (LED) for high Vf.</p>
 
 <h3>Debouncing and EMI <a name="debouncing_and_emi"></a></h3>
 
-<p>Switch debouncing &ndash; ignoring the very rapid (sub-millisecond) opening and closing of switches due to their mechanical construction &ndash; is outside the scope of this repository. However, it may be possible to add capacitors to the switches to reduce switch closure rise time. Additionally, it may be possible to &ldquo;ramp up&rdquo; the output port voltage by using analog instead of digital outputs, which may in turn reduce edge-induced EMI caused by scanning. Both of these techniques could be used with digital inputs, but better results might be obtained with the analog input technique, particularly if the input ports have configurable hysteresis.</p>
+<p>Switch debouncing &ndash; ignoring the very rapid (sub-millisecond) opening and closing of switches due to their mechanical construction &ndash; is outside the scope of this document and repository. However, it may be possible to add capacitors to the switches to increase switch closure voltage rise time. Additionally, it may be possible to &ldquo;ramp up&rdquo; the output port voltage by using analog instead of digital outputs, which may in turn reduce edge-induced EMI caused by scanning. Both of these techniques could be used with digital inputs, but better results might be obtained with the analog input technique, particularly if the input ports have configurable hysteresis.</p>
 
 <h3>Testing <a name="testing"></a></h3>
 
 <p>The &ldquo;markoplexing&rdquo; technique presented here is not merely a theoretical concept &ndash; it has been tested (and works as described) in a real-world demonstration.</p>
 
-<p>A 12-switch charlieplex circuit was constructed and tested using the markoplex technique. All 4096 possible switch combinations have not been checked; those are far too many for manual testing and I have not had the time or resources to construct a testbed using solenoids, relays, transistors, opto-isolators, CMOS analog switches, etc. to automate the process.</p>
+<p>A 12-switch charlieplex circuit was constructed and tested using the markoplex technique. All 4096 possible switch combinations were not checked; those are far too many for manual testing and I have not had the time or resources to construct a testbed which uses solenoids, relays, transistors, opto-isolators, CMOS analog switches, etc. to automate the process.</p>
 
-<p>However, many multiple-closed-switch combinations <em>were</em> tested. All exhibited ghosting with charlieplex software (as expected), and none with markoplex. More conclusively, all 12 possible permutations of &ldquo;all switches closed except for one left open&rdquo; were checked &ndash; if anything would produce ghosting those
-would (but with markoplexing did not).</p>
+<p>However, many specifically chosen multiple-closed-switch combinations <em>were</em> tested. All exhibited ghosting as expected with charlieplexing software, and none with markoplexing. More conclusively, all 12 possible permutations of &ldquo;all switches closed except for one left open&rdquo; were checked &ndash; if anything would cause  ghosts those would (but with markoplexing did not).</p>
 
 <h3>Example software implementation <a name="example_software_implementation"></a></h3>
 
@@ -270,7 +269,7 @@ would (but with markoplexing did not).</p>
 
 <p>Also included is a primitive standalone build system for compiling the executables. Most users will probably want to extract only the basic code (contained in the <a href="source">source</a> directory) for use in their own build environments.</p>
 
-<p>Basic constants describing I/O port (thus physical MCU pin) assignments, etc (many &ldquo;etceteras&rdquo;) are contained <a href="source/main.c">main.c</a>, <a href="source/markoplex.c">markoplex.c</a>,  and <a href="source/display.c">display.c</a> source files. A differently connected LPC824 would require changing these. Of course a different MCU would require a complete rewrite of the code which, in the interest of simplicity, is written in C and without any attempt a making it generic and portable.</p>
+<p>Basic constants describing I/O port (thus physical MCU pin) assignments, etc (many &ldquo;etceteras&rdquo;) are contained <a href="source/main.c">main.c</a>, <a href="source/markoplex.c">markoplex.c</a>,  and <a href="source/display.c">display.c</a> source files. A differently connected LPC824 would require changing these. Of course a different MCU would require a complete rewrite of the code, which, in the interest of simplicity and clarity, is written in C and without attempts to make it generic or portable.</p>
 
 <p>If a 12 LED APA102 &ldquo;smart&rdquo; RGB strip is available it can be connected and driven by the LPC824&rsquo;s SPI peripheral to display the detected switch closures (actual and/or ghost). See the file <a href="source/display.c">display.c</a> and the <code>#ifdef USE_DISPLAY</code> conditional compilation directive. If not, the included <code>markcharl.gdb</code> file&rsquo;s &ldquo;dprintf&rdquo; command can be used instead (or in addition).</p>
 
@@ -278,11 +277,11 @@ would (but with markoplexing did not).</p>
 
 <h2>Configurable circuit (matrix/charlieplex) <a name="configurable_circuit"</a></h2>
 
-<p>As an extra added bonus for the first 100 users to clone or download this repository (as well as any and all others &ndash; I have no intention of removing the circuit; I just like the sound of the marketing phrase &ldquo;for the first 100&rdquo;) will receive, free of charge, the following circuit diagram which can be configured via jumpers into either a 3x4 matrix or a 12-key/4-port charlieplex arrangement.</p>
+<p>As an extra added bonus for the first 100 users to clone or download this repository (as well as any and all others &ndash; I have no plans to remove the circuit, I just like the sound of the marketing phrase &ldquo;for the first 100&rdquo;) will receive, free of charge, the following circuit diagram which can be configured via jumpers into either a 3x4 matrix or a 12-key/4-port charlieplex arrangement.</p>
 
 <p>The three 4-position headers shown as all jumpered represent an incorrect configuration. (I didn&rsquo;t know how to draw headers/jumpers differently.) To use the circuit as a 3x4 matrix, connect the middle two pins (#2 and #3) of each of the three headers.</p>
 
-<p>To use it as for 12-key/4-port charlieplexing/markoplexing, connect the outer sets of pins (#1 to #2 and #3 to #4) on each header, and connect Columns 1 through 4 to the four I/O ports. (The Row 1 through 3 connections are unused in this configuration.) The switch numbers in this diagram map to the ones in the charlieplex diagrams above as:</p>
+<p>To use it as for 12-key/4-port charlieplexing/markoplexing, connect the outer sets of pins (#1 to #2 and #3 to #4) on each header, and connect columns 1 through 4 to the four I/O ports. (The row 1 through 3 connections are unused in this configuration.) The switch numbers in this diagram map to the ones in the charlieplex diagrams above as:</p>
 
 <pre><code>    configurable    charlieplex
     ------------    -----------
